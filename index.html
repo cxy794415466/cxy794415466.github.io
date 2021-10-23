@@ -146,6 +146,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/23/%E8%AE%AF%E4%B8%BAiTOP4412%E6%89%8B%E5%8A%A8%E7%A7%BB%E6%A4%8DU-Boot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="cxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="泡泡吐泡泡">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/23/%E8%AE%AF%E4%B8%BAiTOP4412%E6%89%8B%E5%8A%A8%E7%A7%BB%E6%A4%8DU-Boot/" class="post-title-link" itemprop="url">讯为iTOP4412手动移植U-Boot</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-23 16:25:39" itemprop="dateCreated datePublished" datetime="2021-10-23T16:25:39+08:00">2021-10-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/12/%E8%AF%91-U-BOOT%E6%89%8B%E5%86%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -169,10 +226,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-10-12 09:52:35 / 修改时间：10:31:54" itemprop="dateCreated datePublished" datetime="2021-10-12T09:52:35+08:00">2021-10-12</time>
+              <time title="创建时间：2021-10-12 09:52:35" itemprop="dateCreated datePublished" datetime="2021-10-12T09:52:35+08:00">2021-10-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-18 19:38:13" itemprop="dateModified" datetime="2021-10-18T19:38:13+08:00">2021-10-18</time>
+              </span>
 
           
 
@@ -187,6 +250,35 @@
       
           <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>该目录为U-Boot的源代码，U-Boot是一种基于PowerPC，ARM，MIPS等处理器的嵌入式bootloader，它可以安装在板载ROM上并用于初始化、测试硬件或运行应用代码。</p>
 <p>U-Boot的发展与Linux很相似：一些部分的代码就源自于Linux中，我们有一些头文件在</p>
+<h1 id="目录层次"><a href="#目录层次" class="headerlink" title="目录层次"></a>目录层次</h1><p>/arch            特定架构文件<br>  /arc            ARC架构文件<br>  /arm            ARM架构文件<br>  /m68k            m68k架构文件<br>  /microblaze        microblaze架构文件<br>  /mips            MIPS架构文件<br>  /nds32        NDS32架构文件<br>  /nios2        NIOS2架构文件<br>  /powerpc        PowerPC架构文件<br>  /riscv        RISC-V架构文件<br>  /sandbox        独立于硬件的沙盒环境文件<br>  /sh            SH架构文件<br>  /x86            x86架构文件<br>  /xtensa        Xtensa架构文件<br>/api            对于外部应用的机器/独立于架构的API<br>/board            Board-dependent files板载依赖文件<br>/cmd            U-Boot命令功能实现<br>/common            与架构无关的功能实现<br>/configs        板卡默认设置文件<br>/disk            磁盘驱动器分区处理代码<br>/doc            文档 (包含 ReST与READMEs)<br>/drivers        设备驱动<br>/dts            构建内部U-Boot的fdt文件的Makefile<br>/env            环境支持<br>/examples        独立应用的例程等<br>/fs            文件系统代码(cramfs, ext2, jffs2等.)<br>/include        头文件<br>/lib            所有架构的通用库文件<br>/Licenses        各种许可文件<br>/net            网络代码<br>/post            开机自检<br>/scripts        各种构建脚本和makefile<br>/test            各种单元测试文件<br>/tools            构建和部署 FIT 镜像等的工具</p>
+<h1 id="软件设置"><a href="#软件设置" class="headerlink" title="软件设置"></a>软件设置</h1><p>设置一般使用C预处理指令定义的，理由是在任何时候都应该避免无用的程序代码。</p>
+<p>U-Boot有两种类型的设置变量：</p>
+<ul>
+<li>配置选项</li>
+</ul>
+<p>这类变量是用户来选择是否启用的，一般变量名开头为”CONFUG_”</p>
+<ul>
+<li>系统配置</li>
+</ul>
+<p>这种变量取决于硬件，同时如果你不知道这个变量代表什么意思的时候就最好不要动它。这类变量名开头为”CONFIG_SYS_”</p>
+<p>在以前，所有的设置都是通过手动创建复杂变量链接以及编辑设置文件完成的。最近，U-Boot已经添加了被用于Linux内核的Kbuild设施，它允许你使用”<strong>make menuconfig</strong>“命令去设置你的构建。</p>
+<h2 id="选择处理器架构和板卡型号"><a href="#选择处理器架构和板卡型号" class="headerlink" title="选择处理器架构和板卡型号"></a>选择处理器架构和板卡型号</h2><p>对于所有以支持的板卡，这都能找到准备好使用的默认设置文件，只要使用命令”make <board_name>_defconfig”就可以进行配置。</p>
+<p>以TQM823L模块为例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd u-boot</span><br><span class="line">make TQM823L_defconfig</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果你正在浏览一个板卡的默认设置文件但发现找不到该文件，请检查文件doc/README.scrapyard查看是否为u-boot不再支持的板卡。</p>
+<h2 id="沙盒环境"><a href="#沙盒环境" class="headerlink" title="沙盒环境"></a>沙盒环境</h2><p>U-Boot可以构建</p>
+<h2 id="板卡初始化过程"><a href="#板卡初始化过程" class="headerlink" title="板卡初始化过程"></a>板卡初始化过程</h2><h2 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h2><p>配置选项取决于CPU、板卡的型号，所有的此类信息保存在配置文件”include/config/<board_name>.h”</p>
+<p>例如：对于TQM823L模块而言，所有的配置设置都在”include/config/TQM832L.h”中</p>
+<p>许多选项的命名与Linux内核配置选项的命名类似。目的是使U-Boot能够更加简单的去构建config工具。</p>
+<ul>
+<li>ARM平台总线(CCI)</li>
+</ul>
+<p>CCI(CoreLink Cache Coherent Interconnect)是ARM总线，用于在两个多核集群之间提供完整的缓存一致性设备和I/O主机的cpu和I/O一致性。</p>
+<ul>
+<li>CONFIG_SYS_FSL_HAS_CCI400</li>
+</ul>
+<p>定义从SoC</p>
 
       
     </div>
@@ -338,7 +430,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
